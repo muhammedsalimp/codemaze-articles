@@ -1,0 +1,14 @@
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.deps.json
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.runtimeconfig.json
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.runtimeconfig.dev.json
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.dll
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.pdb
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.csprojAssemblyReference.cache
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.csproj.CoreCompileInputs.cache
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorAssemblyInfo.cache
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorAssemblyInfo.cs
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.AssemblyInfoInputs.cache
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.AssemblyInfo.cs
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorTargetAssemblyInfo.cache
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.dll
+C:\Users\muhammed\Documents\Visual Studio 2017\Projects\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.pdb
