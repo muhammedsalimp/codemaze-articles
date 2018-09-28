@@ -17,7 +17,7 @@ namespace EFCoreDatabaseFirstSample.Models
 
         public virtual DbSet<Author> Author { get; set; }
         public virtual DbSet<AuthorContact> AuthorContact { get; set; }
-        public virtual DbSet<Book> Book { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<BookAuthors> BookAuthors { get; set; }
         public virtual DbSet<BookCategory> BookCategory { get; set; }
         public virtual DbSet<Publisher> Publisher { get; set; }
@@ -26,7 +26,9 @@ namespace EFCoreDatabaseFirstSample.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=Books;Trusted_Connection=True;");
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer("Server=.;Database=Books;Trusted_Connection=True;");
             }
         }
 
