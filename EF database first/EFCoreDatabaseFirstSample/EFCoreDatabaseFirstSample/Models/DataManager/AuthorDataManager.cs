@@ -13,7 +13,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                authors = context.Author
+                authors = context.Authors
                    .Include(author => author.AuthorContact)
                    .ToList();
             }
@@ -27,7 +27,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                author = context.Author
+                author = context.Authors
                     .Single(b => b.Id == id);
             }
 
@@ -36,12 +36,64 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
         public void Add(Author entity)
         {
-            throw new System.NotImplementedException();
+            using (var context = new BooksContext())
+            {
+                Author author = new Author
+                {
+                    Name = "William Shakespeare",
+                    AuthorContact = new AuthorContact()
+                    {
+                        Address = "Henley St, Stratford-upon-Avon CV37 6QW, UK",
+                        ContactNumber = "666-777-8888"
+                    }
+                };
+
+                context.Authors.Add(author);
+                context.SaveChanges();
+            }
         }
 
         public void Update(Author entityToUpdate, Author entity)
         {
-            throw new System.NotImplementedException();
+            using (var context = new BooksContext())
+            {
+                var authorToUpdate = context.Authors.Single(author => author.Name.Equals("William Shakespeare"));
+
+                authorToUpdate.BookAuthors = new List<BookAuthors>()
+                {
+                    new BookAuthors()
+                    {
+                        Book = new Book()
+                        {
+                            Title = "Hamlet",
+                            Category = new BookCategory()
+                            {
+                                Name = "Tragedy"
+                            },
+                            Publisher = new Publisher()
+                            {
+                                Name = "Simon & Schuster"
+                            }
+                        }
+                    },
+                    new BookAuthors()
+                    {
+                        Book = new Book()
+                        {
+                            Title = "Romeo and Juliet",
+                            Category = new BookCategory()
+                            {
+                                Name = "Romance"
+                            },
+                            Publisher = new Publisher()
+                            {
+                                Name = "Oxford University Press"
+                            }
+                        }
+                    }
+                };
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Author entity)

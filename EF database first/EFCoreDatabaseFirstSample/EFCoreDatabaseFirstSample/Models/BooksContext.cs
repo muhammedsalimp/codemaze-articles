@@ -15,12 +15,12 @@ namespace EFCoreDatabaseFirstSample.Models
         {
         }
 
-        public virtual DbSet<Author> Author { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<AuthorContact> AuthorContact { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<BookAuthors> BookAuthors { get; set; }
         public virtual DbSet<BookCategory> BookCategory { get; set; }
-        public virtual DbSet<Publisher> Publisher { get; set; }
+        public virtual DbSet<Publisher> Publishers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -64,17 +64,17 @@ namespace EFCoreDatabaseFirstSample.Models
                     .IsRequired()
                     .HasMaxLength(100);
 
+                entity.HasOne(d => d.Publisher)
+                    .WithMany(p => p.Books)
+                    .HasForeignKey(d => d.PublisherId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Books_Publishers");
+
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Book)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Books_BookCategory");
-
-                entity.HasOne(d => d.Publisher)
-                    .WithMany(p => p.Books)
-                    .HasForeignKey(d => d.PublisherId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Books_Publishers");
             });
 
             modelBuilder.Entity<BookAuthors>(entity =>
