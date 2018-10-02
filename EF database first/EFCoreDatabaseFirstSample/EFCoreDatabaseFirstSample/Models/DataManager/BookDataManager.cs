@@ -18,7 +18,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                book = context.Books
+                book = context.Book
                    .Single(b => b.Id == id);
 
                 context.Entry(book)

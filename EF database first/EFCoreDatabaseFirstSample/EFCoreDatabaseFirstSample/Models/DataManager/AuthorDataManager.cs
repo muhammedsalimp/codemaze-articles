@@ -13,7 +13,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                authors = context.Authors
+                authors = context.Author
                    .Include(author => author.AuthorContact)
                    .ToList();
             }
@@ -27,7 +27,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                author = context.Authors
+                author = context.Author
                     .Single(b => b.Id == id);
             }
 
@@ -48,7 +48,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
                     }
                 };
 
-                context.Authors.Add(author);
+                context.Author.Add(author);
                 context.SaveChanges();
             }
         }
@@ -57,7 +57,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
         {
             using (var context = new BooksContext())
             {
-                var authorToUpdate = context.Authors.Single(author => author.Name.Equals("William Shakespeare"));
+                var authorToUpdate = context.Author.Single(author => author.Name.Equals("William Shakespeare"));
 
                 authorToUpdate.BookAuthors = new List<BookAuthors>()
                 {

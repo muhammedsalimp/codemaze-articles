@@ -15,8 +15,8 @@ namespace EFCoreDatabaseFirstSample.Models
         public long CategoryId { get; set; }
         public long PublisherId { get; set; }
 
-        public BookCategory Category { get; set; }
-        public Publisher Publisher { get; set; }
-        public ICollection<BookAuthors> BookAuthors { get; set; }
+        public virtual BookCategory Category { get; set; }
+        public virtual Publisher Publisher { get; set; }
+        public virtual ICollection<BookAuthors> BookAuthors { get; set; }
     }
 }

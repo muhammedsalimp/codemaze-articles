@@ -15,12 +15,12 @@ namespace EFCoreDatabaseFirstSample.Models
         {
         }
 
-        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Author> Author { get; set; }
         public virtual DbSet<AuthorContact> AuthorContact { get; set; }
-        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Book { get; set; }
         public virtual DbSet<BookAuthors> BookAuthors { get; set; }
         public virtual DbSet<BookCategory> BookCategory { get; set; }
-        public virtual DbSet<Publisher> Publishers { get; set; }
+        public virtual DbSet<Publisher> Publisher { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

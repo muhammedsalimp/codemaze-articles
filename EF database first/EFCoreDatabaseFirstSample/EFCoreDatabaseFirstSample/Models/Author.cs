@@ -8,7 +8,7 @@ namespace EFCoreDatabaseFirstSample.Models
         public long Id { get; set; }
         public string Name { get; set; }
 
-        public AuthorContact AuthorContact { get; set; }
+        public virtual AuthorContact AuthorContact { get; set; }
         public virtual ICollection<BookAuthors> BookAuthors { get; set; }
     }
 }

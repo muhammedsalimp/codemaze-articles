@@ -9,6 +9,6 @@ namespace EFCoreDatabaseFirstSample.Models
         public string ContactNumber { get; set; }
         public string Address { get; set; }
 
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
     }
 }

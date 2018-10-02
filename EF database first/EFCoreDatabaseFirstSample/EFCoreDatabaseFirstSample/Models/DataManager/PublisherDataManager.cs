@@ -31,7 +31,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
         {
             using (var context = new BooksContext())
             {
-                var publisher = context.Publishers
+                var publisher = context.Publisher
                     .Include(b => b.Books)
                     .Single(publisher1 => publisher1.Name.Equals("Simon & Schuster"));
 
