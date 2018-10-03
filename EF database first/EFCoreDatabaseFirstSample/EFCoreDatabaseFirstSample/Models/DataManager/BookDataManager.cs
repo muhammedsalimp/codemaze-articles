@@ -1,24 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class BookDataManager : IDataRepository<Book>
+    public class BookDataManager : IDataRepository<BookDTO>
 
     {
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<BookDTO> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public Book Get(long id)
+        public BookDTO Get(long id)
         {
-            Book book;
+            BookDTO bookDTO;
 
             using (var context = new BooksContext())
             {
-                book = context.Book
+                Book book = context.Book
                    .Single(b => b.Id == id);
 
                 context.Entry(book)
@@ -28,22 +29,24 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
                 context.Entry(book)
                     .Reference(b => b.Publisher)
                     .Load();
+
+                bookDTO = BookDTOMapper.MapToBookDTO(book);
             }
 
-            return book;
+            return bookDTO;
         }
 
-        public void Add(Book entity)
+        public void Add(BookDTO entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(Book entityToUpdate, Book entity)
+        public void Update(BookDTO entityToUpdate, BookDTO entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(Book entity)
+        public void Delete(BookDTO entity)
         {
             throw new System.NotImplementedException();
         }

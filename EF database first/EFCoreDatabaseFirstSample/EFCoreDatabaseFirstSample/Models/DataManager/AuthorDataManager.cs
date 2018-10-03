@@ -1,40 +1,45 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class AuthorDataManager : IDataRepository<Author>
+    public class AuthorDataManager : IDataRepository<AuthorDTO>
     {
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<AuthorDTO> GetAll()
         {
-            List<Author> authors;
+            List<AuthorDTO> authorDTOs;
 
             using (var context = new BooksContext())
             {
-                authors = context.Author
-                   .Include(author => author.AuthorContact)
-                   .ToList();
+                var authors = context.Author
+                    .Include(author => author.AuthorContact)
+                    .ToList();
+
+                authorDTOs = AuthorDTOMapper.MapToDTOs(authors);
             }
 
-            return authors;
+            return authorDTOs;
         }
 
-        public Author Get(long id)
+        public AuthorDTO Get(long id)
         {
-            Author author;
+            AuthorDTO authorDTO;
 
             using (var context = new BooksContext())
             {
-                author = context.Author
+                var author = context.Author
                     .Single(b => b.Id == id);
+
+                authorDTO = AuthorDTOMapper.MapToDTO(author);
             }
 
-            return author;
+            return authorDTO;
         }
 
-        public void Add(Author entity)
+        public void Add(AuthorDTO entity)
         {
             using (var context = new BooksContext())
             {
@@ -53,7 +58,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             }
         }
 
-        public void Update(Author entityToUpdate, Author entity)
+        public void Update(AuthorDTO entityToUpdate, AuthorDTO entity)
         {
             using (var context = new BooksContext())
             {
@@ -96,7 +101,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             }
         }
 
-        public void Delete(Author entity)
+        public void Delete(AuthorDTO entity)
         {
             throw new System.NotImplementedException();
         }

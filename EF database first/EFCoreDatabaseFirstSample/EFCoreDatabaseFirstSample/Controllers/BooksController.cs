@@ -5,41 +5,39 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFCoreDatabaseFirstSample.Controllers
 {
-    [Route("api/authors")]
+    [Route("api/books")]
     [ApiController]
-    public class AuthorsController : ControllerBase
+    public class BooksController : ControllerBase
     {
-        private readonly IDataRepository<AuthorDTO> _dataRepository;
+        private readonly IDataRepository<BookDTO> _dataRepository;
 
-        public AuthorsController(IDataRepository<AuthorDTO> dataRepository)
+        public BooksController(IDataRepository<BookDTO> dataRepository)
         {
             _dataRepository = dataRepository;
         }
 
-        // GET: api/Authors
+        // GET: api/Books
         [HttpGet]
-        public IActionResult Get()
-
+        public IEnumerable<string> Get()
         {
-            IEnumerable<AuthorDTO> authors = _dataRepository.GetAll();
-            return Ok(authors);
+            return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Authors/5
+        // GET: api/Books/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            AuthorDTO author = _dataRepository.Get(id);
-            return Ok(author);
+            BookDTO book = _dataRepository.Get(id);
+            return Ok(book);
         }
 
-        // POST: api/Authors
+        // POST: api/Books
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Authors/5
+        // PUT: api/Books/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
