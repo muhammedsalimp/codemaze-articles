@@ -1,20 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class PublisherDataManager : IDataRepository<Publisher>
+    public class PublisherDataManager : IDataRepository<Publisher, PublisherDTO>
     {
-        public IEnumerable<Publisher> GetAll()
+        public IEnumerable<PublisherDTO> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public Publisher Get(long id)
+        public PublisherDTO Get(long id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public Publisher GetEntity(long id)
+        {
+            Publisher publisher;
+            using (var context = new BooksContext())
+            {
+                publisher = context.Publisher
+                    .Include(a => a.Books)
+                    .Single(b => b.Id == id);
+            }
+
+            return publisher;
         }
 
         public void Add(Publisher entity)
@@ -31,11 +45,8 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
         {
             using (var context = new BooksContext())
             {
-                var publisher = context.Publisher
-                    .Include(b => b.Books)
-                    .Single(publisher1 => publisher1.Name.Equals("Simon & Schuster"));
-
-                context.Remove(publisher);
+                context.Remove(entity);
+                context.SaveChanges();
             }
         }
     }

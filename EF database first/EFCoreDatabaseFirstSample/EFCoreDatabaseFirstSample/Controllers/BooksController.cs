@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EFCoreDatabaseFirstSample.Models;
 using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -9,18 +10,11 @@ namespace EFCoreDatabaseFirstSample.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IDataRepository<BookDTO> _dataRepository;
+        private readonly IDataRepository<Book, BookDTO> _dataRepository;
 
-        public BooksController(IDataRepository<BookDTO> dataRepository)
+        public BooksController(IDataRepository<Book, BookDTO> dataRepository)
         {
             _dataRepository = dataRepository;
-        }
-
-        // GET: api/Books
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         // GET: api/Books/5
@@ -31,22 +25,5 @@ namespace EFCoreDatabaseFirstSample.Controllers
             return Ok(book);
         }
 
-        // POST: api/Books
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Books/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

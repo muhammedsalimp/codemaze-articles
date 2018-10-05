@@ -32,8 +32,9 @@ namespace EFCoreDatabaseFirstSample
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<BooksContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:BooksDB"]));
-            services.AddScoped<IDataRepository<AuthorDTO>, AuthorDataManager>();
-            services.AddScoped<IDataRepository<BookDTO>, BookDataManager>();
+            services.AddScoped<IDataRepository<Author, AuthorDTO>, AuthorDataManager>();
+            services.AddScoped<IDataRepository<Book, BookDTO>, BookDataManager>();
+            services.AddScoped<IDataRepository<Publisher, PublisherDTO>, PublisherDataManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -23,6 +23,7 @@ namespace EFCoreDatabaseFirstSample.Models.DTO
             {
                 Id = author.Id,
                 Name = author.Name,
+
                 AuthorContact = new AuthorContactDTO()
                 {
                     AuthorId = author.Id,

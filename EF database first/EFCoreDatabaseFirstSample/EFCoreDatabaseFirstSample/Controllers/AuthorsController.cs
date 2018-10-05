@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EFCoreDatabaseFirstSample.Models;
 using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace EFCoreDatabaseFirstSample.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly IDataRepository<AuthorDTO> _dataRepository;
+        private readonly IDataRepository<Author, AuthorDTO> _dataRepository;
 
-        public AuthorsController(IDataRepository<AuthorDTO> dataRepository)
+        public AuthorsController(IDataRepository<Author, AuthorDTO> dataRepository)
         {
             _dataRepository = dataRepository;
         }
@@ -19,14 +20,13 @@ namespace EFCoreDatabaseFirstSample.Controllers
         // GET: api/Authors
         [HttpGet]
         public IActionResult Get()
-
         {
             IEnumerable<AuthorDTO> authors = _dataRepository.GetAll();
             return Ok(authors);
         }
 
         // GET: api/Authors/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult Get(int id)
         {
             AuthorDTO author = _dataRepository.Get(id);
@@ -35,20 +35,34 @@ namespace EFCoreDatabaseFirstSample.Controllers
 
         // POST: api/Authors
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Author author)
         {
+            if (author is null)
+            {
+                return BadRequest("Author is null.");
+            }
+
+            _dataRepository.Add(author);
+            return CreatedAtRoute("GetAuthor", new { Id = author.Id }, null);
         }
 
         // PUT: api/Authors/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Author author)
         {
-        }
+            if (author == null)
+            {
+                return BadRequest("Author is null.");
+            }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            Author authorToUpdate = _dataRepository.GetEntity(id);
+            if (authorToUpdate == null)
+            {
+                return NotFound("The Employee record couldn't be found.");
+            }
+
+            _dataRepository.Update(authorToUpdate, author);
+            return NoContent();
         }
     }
 }

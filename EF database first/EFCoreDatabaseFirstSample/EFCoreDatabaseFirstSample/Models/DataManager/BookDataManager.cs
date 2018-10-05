@@ -5,7 +5,7 @@ using EFCoreDatabaseFirstSample.Models.Repository;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class BookDataManager : IDataRepository<BookDTO>
+    public class BookDataManager : IDataRepository<Book, BookDTO>
 
     {
         public IEnumerable<BookDTO> GetAll()
@@ -36,17 +36,22 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             return bookDTO;
         }
 
-        public void Add(BookDTO entity)
+        public Book GetEntity(long id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(BookDTO entityToUpdate, BookDTO entity)
+        public void Add(Book entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(BookDTO entity)
+        public void Update(Book entityToUpdate, Book entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete(Book entity)
         {
             throw new System.NotImplementedException();
         }

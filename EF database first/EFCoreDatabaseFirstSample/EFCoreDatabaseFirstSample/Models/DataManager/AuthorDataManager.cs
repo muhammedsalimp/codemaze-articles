@@ -6,22 +6,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class AuthorDataManager : IDataRepository<AuthorDTO>
+    public class AuthorDataManager : IDataRepository<Author, AuthorDTO>
     {
         public IEnumerable<AuthorDTO> GetAll()
         {
-            List<AuthorDTO> authorDTOs;
-
             using (var context = new BooksContext())
             {
-                var authors = context.Author
+                List<Author> authors = context.Author
                     .Include(author => author.AuthorContact)
                     .ToList();
 
-                authorDTOs = AuthorDTOMapper.MapToDTOs(authors);
+                List<AuthorDTO> authorDTOs = AuthorDTOMapper.MapToDTOs(authors);
+                return authorDTOs;
             }
-
-            return authorDTOs;
         }
 
         public AuthorDTO Get(long id)
@@ -30,7 +27,7 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
             using (var context = new BooksContext())
             {
-                var author = context.Author
+                Author author = context.Author
                     .Single(b => b.Id == id);
 
                 authorDTO = AuthorDTOMapper.MapToDTO(author);
@@ -39,69 +36,56 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             return authorDTO;
         }
 
-        public void Add(AuthorDTO entity)
+        public Author GetEntity(long id)
         {
             using (var context = new BooksContext())
             {
-                Author author = new Author
-                {
-                    Name = "William Shakespeare",
-                    AuthorContact = new AuthorContact()
-                    {
-                        Address = "Henley St, Stratford-upon-Avon CV37 6QW, UK",
-                        ContactNumber = "666-777-8888"
-                    }
-                };
+                Author author = context.Author
+                    .Include(a => a.AuthorContact)
+                    .Single(b => b.Id == id);
 
+                return author;
+            }
+        }
+
+        public void Add(Author author)
+        {
+            using (var context = new BooksContext())
+            {
                 context.Author.Add(author);
                 context.SaveChanges();
             }
         }
 
-        public void Update(AuthorDTO entityToUpdate, AuthorDTO entity)
+        public void Update(Author entityToUpdate, Author entity)
         {
             using (var context = new BooksContext())
             {
-                var authorToUpdate = context.Author.Single(author => author.Name.Equals("William Shakespeare"));
+                entityToUpdate = context.Author.Include(a => a.BookAuthors).Single(b => b.Id == entityToUpdate.Id);
 
-                authorToUpdate.BookAuthors = new List<BookAuthors>()
+                entityToUpdate.Name = entity.Name;
+
+                entityToUpdate.AuthorContact.Address = entity.AuthorContact.Address;
+                entityToUpdate.AuthorContact.ContactNumber = entity.AuthorContact.ContactNumber;
+
+                List<BookAuthors> deletedBooks = entityToUpdate.BookAuthors.Except(entity.BookAuthors).ToList();
+                List<BookAuthors> addedBooks = entity.BookAuthors.Except(entityToUpdate.BookAuthors).ToList();
+
+                deletedBooks.ForEach(bookToDelete =>
+                    entityToUpdate.BookAuthors.Remove(
+                        entityToUpdate.BookAuthors
+                            .First(b => b.BookId == bookToDelete.BookId)));
+
+                foreach (BookAuthors addedBook in addedBooks)
                 {
-                    new BookAuthors()
-                    {
-                        Book = new Book()
-                        {
-                            Title = "Hamlet",
-                            Category = new BookCategory()
-                            {
-                                Name = "Tragedy"
-                            },
-                            Publisher = new Publisher()
-                            {
-                                Name = "Simon & Schuster"
-                            }
-                        }
-                    },
-                    new BookAuthors()
-                    {
-                        Book = new Book()
-                        {
-                            Title = "Romeo and Juliet",
-                            Category = new BookCategory()
-                            {
-                                Name = "Romance"
-                            },
-                            Publisher = new Publisher()
-                            {
-                                Name = "Oxford University Press"
-                            }
-                        }
-                    }
-                };
+                    context.Entry(addedBook).State = EntityState.Added;
+                }
+
                 context.SaveChanges();
             }
         }
 
-        public void Delete(AuthorDTO entity)
+        public void Delete(Author entity)
         {
             throw new System.NotImplementedException();
         }
