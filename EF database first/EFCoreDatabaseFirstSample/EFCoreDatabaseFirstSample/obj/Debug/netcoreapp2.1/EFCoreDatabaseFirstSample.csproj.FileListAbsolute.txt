@@ -26,3 +26,17 @@ C:\Users\muhammed\Documents\Visual Studio 2017\Projects\codemaze-articles\codema
 C:\Users\muhammed\Documents\Visual Studio 2017\Projects\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorTargetAssemblyInfo.cache
 C:\Users\muhammed\Documents\Visual Studio 2017\Projects\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.dll
 C:\Users\muhammed\Documents\Visual Studio 2017\Projects\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.pdb
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.deps.json
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.runtimeconfig.json
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.runtimeconfig.dev.json
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.dll
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\bin\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.pdb
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.csprojAssemblyReference.cache
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.csproj.CoreCompileInputs.cache
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorAssemblyInfo.cache
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorAssemblyInfo.cs
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.AssemblyInfoInputs.cache
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.AssemblyInfo.cs
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.RazorTargetAssemblyInfo.cache
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.dll
+E:\Code\codemaze-articles\codemaze-articles\EF database first\EFCoreDatabaseFirstSample\EFCoreDatabaseFirstSample\obj\Debug\netcoreapp2.1\EFCoreDatabaseFirstSample.pdb

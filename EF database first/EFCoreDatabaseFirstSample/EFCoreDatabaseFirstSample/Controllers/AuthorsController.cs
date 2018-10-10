@@ -42,6 +42,11 @@ namespace EFCoreDatabaseFirstSample.Controllers
                 return BadRequest("Author is null.");
             }
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             _dataRepository.Add(author);
             return CreatedAtRoute("GetAuthor", new { Id = author.Id }, null);
         }
@@ -59,6 +64,11 @@ namespace EFCoreDatabaseFirstSample.Controllers
             if (authorToUpdate == null)
             {
                 return NotFound("The Employee record couldn't be found.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
             }
 
             _dataRepository.Update(authorToUpdate, author);
