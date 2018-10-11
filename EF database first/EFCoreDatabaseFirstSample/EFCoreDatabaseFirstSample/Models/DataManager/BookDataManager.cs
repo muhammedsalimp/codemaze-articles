@@ -20,7 +20,12 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             using (var context = new BooksContext())
             {
                 Book book = context.Book
-                   .Single(b => b.Id == id);
+                   .SingleOrDefault(b => b.Id == id);
+
+                if (book == null)
+                {
+                    return null;
+                }
 
                 context.Entry(book)
                     .Collection(b => b.BookAuthors)

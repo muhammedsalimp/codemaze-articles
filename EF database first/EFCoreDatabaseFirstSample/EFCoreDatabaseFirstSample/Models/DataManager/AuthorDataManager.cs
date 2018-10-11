@@ -28,7 +28,12 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             using (var context = new BooksContext())
             {
                 Author author = context.Author
-                    .Single(b => b.Id == id);
+                    .SingleOrDefault(b => b.Id == id);
+
+                if (author == null)
+                {
+                    return null;
+                }
 
                 authorDTO = AuthorDTOMapper.MapToDTO(author);
             }

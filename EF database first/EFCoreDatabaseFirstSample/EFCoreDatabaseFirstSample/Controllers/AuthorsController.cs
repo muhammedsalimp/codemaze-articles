@@ -30,6 +30,11 @@ namespace EFCoreDatabaseFirstSample.Controllers
         public IActionResult Get(int id)
         {
             AuthorDTO author = _dataRepository.Get(id);
+            if (author == null)
+            {
+                return NotFound("Author not found.");
+            }
+
             return Ok(author);
         }
 
