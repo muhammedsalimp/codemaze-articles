@@ -21,7 +21,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IEnumerable<AuthorDTO> authors = _dataRepository.GetAll();
+            IEnumerable<Author> authors = _dataRepository.GetAll();
             return Ok(authors);
         }
 
@@ -29,7 +29,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult Get(int id)
         {
-            AuthorDTO author = _dataRepository.Get(id);
+            AuthorDTO author = _dataRepository.GetDTO(id);
             if (author == null)
             {
                 return NotFound("Author not found.");
@@ -65,7 +65,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
                 return BadRequest("Author is null.");
             }
 
-            Author authorToUpdate = _dataRepository.GetEntity(id);
+            Author authorToUpdate = _dataRepository.Get(id);
             if (authorToUpdate == null)
             {
                 return NotFound("The Employee record couldn't be found.");

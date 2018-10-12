@@ -6,42 +6,43 @@ using EFCoreDatabaseFirstSample.Models.Repository;
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
     public class BookDataManager : IDataRepository<Book, BookDTO>
-
     {
-        public IEnumerable<BookDTO> GetAll()
+        readonly BooksContext _booksContext;
+
+        public BookDataManager(BooksContext context)
+        {
+            _booksContext = context;
+        }
+
+        public IEnumerable<Book> GetAll()
         {
             throw new System.NotImplementedException();
         }
-
-        public BookDTO Get(long id)
+        
+        public Book Get(long id)
         {
-            BookDTO bookDTO;
+            _booksContext.ChangeTracker.LazyLoadingEnabled = false;
 
-            using (var context = new BooksContext())
+            Book book = _booksContext.Book
+                .SingleOrDefault(b => b.Id == id);
+
+            if (book == null)
             {
-                Book book = context.Book
-                   .SingleOrDefault(b => b.Id == id);
-
-                if (book == null)
-                {
-                    return null;
-                }
-
-                context.Entry(book)
-                    .Collection(b => b.BookAuthors)
-                    .Load();
-
-                context.Entry(book)
-                    .Reference(b => b.Publisher)
-                    .Load();
-
-                bookDTO = BookDTOMapper.MapToBookDTO(book);
+                return null;
             }
 
-            return bookDTO;
+            _booksContext.Entry(book)
+                .Collection(b => b.BookAuthors)
+                .Load();
+
+            _booksContext.Entry(book)
+                .Reference(b => b.Publisher)
+                .Load();
+            
+            return book;
         }
 
-        public Book GetEntity(long id)
+        public BookDTO GetDTO(long id)
         {
             throw new System.NotImplementedException();
         }

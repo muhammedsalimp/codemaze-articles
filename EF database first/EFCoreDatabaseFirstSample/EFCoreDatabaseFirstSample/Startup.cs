@@ -31,6 +31,10 @@ namespace EFCoreDatabaseFirstSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .AddJsonOptions(
+                    options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             services.AddDbContext<BooksContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:BooksDB"]));
             services.AddScoped<IDataRepository<Author, AuthorDTO>, AuthorDataManager>();
             services.AddScoped<IDataRepository<Book, BookDTO>, BookDataManager>();

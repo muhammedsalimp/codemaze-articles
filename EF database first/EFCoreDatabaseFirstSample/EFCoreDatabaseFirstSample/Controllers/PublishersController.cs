@@ -21,7 +21,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Publisher publisher = _dataRepository.GetEntity(id);
+            Publisher publisher = _dataRepository.Get(id);
             if (publisher == null)
             {
                 return NotFound("The Publisher record couldn't be found.");

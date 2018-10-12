@@ -21,7 +21,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            BookDTO book = _dataRepository.Get(id);
+            Book book = _dataRepository.Get(id);
             if (book == null)
             {
                 return NotFound("Book not found.");

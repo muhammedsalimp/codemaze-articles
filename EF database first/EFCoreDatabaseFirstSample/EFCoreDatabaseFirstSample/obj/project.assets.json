@@ -12549,30 +12549,33 @@
     ]
   },
   "packageFolders": {
-    "D:\\Users\\Saleem\\.nuget\\packages\\": {},
-    "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\muhammed\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Code\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample.csproj",
+      "projectUniqueName": "C:\\Users\\muhammed\\Documents\\Visual Studio 2017\\Projects\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample.csproj",
       "projectName": "EFCoreDatabaseFirstSample",
-      "projectPath": "E:\\Code\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample.csproj",
-      "packagesPath": "D:\\Users\\Saleem\\.nuget\\packages\\",
-      "outputPath": "E:\\Code\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\obj\\",
+      "projectPath": "C:\\Users\\muhammed\\Documents\\Visual Studio 2017\\Projects\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample.csproj",
+      "packagesPath": "C:\\Users\\muhammed\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\muhammed\\Documents\\Visual Studio 2017\\Projects\\codemaze-articles\\codemaze-articles\\EF database first\\EFCoreDatabaseFirstSample\\EFCoreDatabaseFirstSample\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "D:\\Users\\Saleem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\muhammed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "D:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\RBSNugetPackages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
