@@ -24,17 +24,6 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
                 .ToList();
         }
 
-        public AuthorDTO GetWithContact(long id)
-        {
-            Author author = Get(id);
-            if (author == null)
-            {
-                return null;
-            }
-
-            return AuthorDTOMapper.MapToDTO(author);
-        }
-
         public Author Get(long id)
         {
             Author author = _booksContext.Author
