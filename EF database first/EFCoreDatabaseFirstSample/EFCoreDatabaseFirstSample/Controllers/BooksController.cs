@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using EFCoreDatabaseFirstSample.Models;
+﻿using EFCoreDatabaseFirstSample.Models;
 using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +9,9 @@ namespace EFCoreDatabaseFirstSample.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IDataRepository<Book, BookDTO> _dataRepository;
+        private readonly IDataRepository<Book, BookDto> _dataRepository;
 
-        public BooksController(IDataRepository<Book, BookDTO> dataRepository)
+        public BooksController(IDataRepository<Book, BookDto> dataRepository)
         {
             _dataRepository = dataRepository;
         }
@@ -21,7 +20,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Book book = _dataRepository.Get(id);
+            var book = _dataRepository.Get(id);
             if (book == null)
             {
                 return NotFound("Book not found.");

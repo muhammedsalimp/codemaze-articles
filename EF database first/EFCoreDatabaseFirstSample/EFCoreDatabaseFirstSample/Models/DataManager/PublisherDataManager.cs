@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class PublisherDataManager : IDataRepository<Publisher, PublisherDTO>
+    public class PublisherDataManager : IDataRepository<Publisher, PublisherDto>
     {
-        readonly BooksContext _booksContext;
+        readonly BooksStoreContext _booksStoreContext;
 
-        public PublisherDataManager(BooksContext context)
+        public PublisherDataManager(BooksStoreContext storeContext)
         {
-            _booksContext = context;
+            _booksStoreContext = storeContext;
         }
 
         public IEnumerable<Publisher> GetAll()
@@ -22,12 +22,12 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
         public Publisher Get(long id)
         {
-            return _booksContext.Publisher
+            return _booksStoreContext.Publisher
                 .Include(a => a.Books)
                 .Single(b => b.Id == id);
         }
 
-        public PublisherDTO GetDTO(long id)
+        public PublisherDto GetDto(long id)
         {
             throw new System.NotImplementedException();
         }
@@ -44,8 +44,8 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
 
         public void Delete(Publisher entity)
         {
-            _booksContext.Remove(entity);
-            _booksContext.SaveChanges();
+            _booksStoreContext.Remove(entity);
+            _booksStoreContext.SaveChanges();
         }
     }
 }

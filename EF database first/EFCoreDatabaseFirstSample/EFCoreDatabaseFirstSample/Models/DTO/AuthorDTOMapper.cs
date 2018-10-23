@@ -1,15 +1,15 @@
 ﻿namespace EFCoreDatabaseFirstSample.Models.DTO
 {
-    public static class AuthorDTOMapper
+    public static class AuthorDtoMapper
     {
-        public static AuthorDTO MapToDTO(Author author)
+        public static AuthorDto MapToDto(Author author)
         {
-            return new AuthorDTO()
+            return new AuthorDto()
             {
                 Id = author.Id,
                 Name = author.Name,
 
-                AuthorContact = new AuthorContactDTO()
+                AuthorContact = new AuthorContactDto()
                 {
                     AuthorId = author.Id,
                     Address = author.AuthorContact.Address,

@@ -1,8 +1,8 @@
 ﻿namespace EFCoreDatabaseFirstSample.Models.DTO
 {
-    public class AuthorDTO
+    public class AuthorDto
     {
-        public AuthorDTO()
+        public AuthorDto()
         {
         }
 
@@ -10,6 +10,6 @@
 
         public string Name { get; set; }
 
-        public AuthorContactDTO AuthorContact { get; set; }
+        public AuthorContactDto AuthorContact { get; set; }
     }
 }

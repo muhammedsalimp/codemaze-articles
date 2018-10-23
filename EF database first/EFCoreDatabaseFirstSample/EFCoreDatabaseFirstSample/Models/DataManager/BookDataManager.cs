@@ -5,13 +5,13 @@ using EFCoreDatabaseFirstSample.Models.Repository;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class BookDataManager : IDataRepository<Book, BookDTO>
+    public class BookDataManager : IDataRepository<Book, BookDto>
     {
-        readonly BooksContext _booksContext;
+        readonly BooksStoreContext _booksStoreContext;
 
-        public BookDataManager(BooksContext context)
+        public BookDataManager(BooksStoreContext storeContext)
         {
-            _booksContext = context;
+            _booksStoreContext = storeContext;
         }
 
         public IEnumerable<Book> GetAll()
@@ -21,9 +21,9 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
         
         public Book Get(long id)
         {
-            _booksContext.ChangeTracker.LazyLoadingEnabled = false;
+            _booksStoreContext.ChangeTracker.LazyLoadingEnabled = false;
 
-            Book book = _booksContext.Book
+            var book = _booksStoreContext.Book
                 .SingleOrDefault(b => b.Id == id);
 
             if (book == null)
@@ -31,18 +31,18 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
                 return null;
             }
 
-            _booksContext.Entry(book)
+            _booksStoreContext.Entry(book)
                 .Collection(b => b.BookAuthors)
                 .Load();
 
-            _booksContext.Entry(book)
+            _booksStoreContext.Entry(book)
                 .Reference(b => b.Publisher)
                 .Load();
             
             return book;
         }
 
-        public BookDTO GetDTO(long id)
+        public BookDto GetDto(long id)
         {
             throw new System.NotImplementedException();
         }

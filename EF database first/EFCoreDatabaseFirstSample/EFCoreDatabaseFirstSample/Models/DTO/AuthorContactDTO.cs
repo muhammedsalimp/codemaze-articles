@@ -1,8 +1,8 @@
 ﻿namespace EFCoreDatabaseFirstSample.Models.DTO
 {
-    public class AuthorContactDTO
+    public class AuthorContactDto
     {
-        public AuthorContactDTO()
+        public AuthorContactDto()
         {
         }
 

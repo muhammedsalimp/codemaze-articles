@@ -10,9 +10,9 @@ namespace EFCoreDatabaseFirstSample.Controllers
     [ApiController]
     public class PublishersController : ControllerBase
     {
-        private readonly IDataRepository<Publisher, PublisherDTO> _dataRepository;
+        private readonly IDataRepository<Publisher, PublisherDto> _dataRepository;
 
-        public PublishersController(IDataRepository<Publisher, PublisherDTO> dataRepository)
+        public PublishersController(IDataRepository<Publisher, PublisherDto> dataRepository)
         {
             _dataRepository = dataRepository;
         }
@@ -21,7 +21,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Publisher publisher = _dataRepository.Get(id);
+            var publisher = _dataRepository.Get(id);
             if (publisher == null)
             {
                 return NotFound("The Publisher record couldn't be found.");

@@ -2,11 +2,11 @@
 
 namespace EFCoreDatabaseFirstSample.Models.Repository
 {
-    public interface IDataRepository<TEntity, TDTO>
+    public interface IDataRepository<TEntity, TDto>
     {
         IEnumerable<TEntity> GetAll();
         TEntity Get(long id);
-        TDTO GetDTO(long id);
+        TDto GetDto(long id);
         void Add(TEntity entity);
         void Update(TEntity entityToUpdate, TEntity entity);
         void Delete(TEntity entity);

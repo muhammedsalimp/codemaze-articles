@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using EFCoreDatabaseFirstSample.Models;
+﻿using EFCoreDatabaseFirstSample.Models;
 using EFCoreDatabaseFirstSample.Models.DTO;
 using EFCoreDatabaseFirstSample.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +9,9 @@ namespace EFCoreDatabaseFirstSample.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly IDataRepository<Author, AuthorDTO> _dataRepository;
+        private readonly IDataRepository<Author, AuthorDto> _dataRepository;
 
-        public AuthorsController(IDataRepository<Author, AuthorDTO> dataRepository)
+        public AuthorsController(IDataRepository<Author, AuthorDto> dataRepository)
         {
             _dataRepository = dataRepository;
         }
@@ -21,7 +20,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            IEnumerable<Author> authors = _dataRepository.GetAll();
+            var authors = _dataRepository.GetAll();
             return Ok(authors);
         }
 
@@ -29,7 +28,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
         [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult Get(int id)
         {
-            AuthorDTO author = _dataRepository.GetDTO(id);
+            var author = _dataRepository.GetDto(id);
             if (author == null)
             {
                 return NotFound("Author not found.");
@@ -65,7 +64,7 @@ namespace EFCoreDatabaseFirstSample.Controllers
                 return BadRequest("Author is null.");
             }
 
-            Author authorToUpdate = _dataRepository.Get(id);
+            var authorToUpdate = _dataRepository.Get(id);
             if (authorToUpdate == null)
             {
                 return NotFound("The Employee record couldn't be found.");

@@ -4,15 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EFCoreDatabaseFirstSample.Models
 {
-    public partial class BooksContext : DbContext
+    public partial class BooksStoreContext : DbContext
     {
-        public BooksContext()
+        public BooksStoreContext()
         {
         }
 
-        public BooksContext(DbContextOptions<BooksContext> options)
+        public BooksStoreContext(DbContextOptions<BooksStoreContext> options)
             : base(options)
         {
+            ChangeTracker.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Author> Author { get; set; }
@@ -28,7 +29,7 @@ namespace EFCoreDatabaseFirstSample.Models
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer("Server=.;Database=Books;Trusted_Connection=True;");
+                    .UseSqlServer("Server=.;Database=BookStore;Trusted_Connection=True;");
             }
         }
 

@@ -1,8 +1,8 @@
-CREATE DATABASE Books1
+CREATE DATABASE BookStore
 
 GO
 
-USE Books1
+USE BookStore
 
 GO
 

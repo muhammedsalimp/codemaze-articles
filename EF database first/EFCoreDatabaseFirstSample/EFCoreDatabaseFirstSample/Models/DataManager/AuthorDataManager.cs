@@ -6,55 +6,55 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDatabaseFirstSample.Models.DataManager
 {
-    public class AuthorDataManager : IDataRepository<Author, AuthorDTO>
+    public class AuthorDataManager : IDataRepository<Author, AuthorDto>
     {
-        readonly BooksContext _booksContext;
+        readonly BooksStoreContext _booksStoreContext;
 
-        public AuthorDataManager(BooksContext context)
+        public AuthorDataManager(BooksStoreContext storeContext)
         {
-            _booksContext = context;
+            _booksStoreContext = storeContext;
         }
 
         public IEnumerable<Author> GetAll()
         {
-            _booksContext.ChangeTracker.LazyLoadingEnabled = false;
-
-            return _booksContext.Author
+            return _booksStoreContext.Author
                 .Include(author => author.AuthorContact)
                 .ToList();
         }
 
         public Author Get(long id)
         {
-            Author author = _booksContext.Author
+            var author = _booksStoreContext.Author
                 .SingleOrDefault(b => b.Id == id);
 
             return author;
         }
 
-        public AuthorDTO GetDTO(long id)
+        public AuthorDto GetDto(long id)
         {
-            using (var context = new BooksContext())
+            _booksStoreContext.ChangeTracker.LazyLoadingEnabled = true;
+
+            using (var context = new BooksStoreContext())
             {
-                Author author = context.Author
+                var author = context.Author
                     .SingleOrDefault(b => b.Id == id);
 
-                return AuthorDTOMapper.MapToDTO(author);
+                return AuthorDtoMapper.MapToDto(author);
             }
         }
 
 
         public void Add(Author entity)
         {
-            _booksContext.Author.Add(entity);
-            _booksContext.SaveChanges();
+            _booksStoreContext.Author.Add(entity);
+            _booksStoreContext.SaveChanges();
         }
 
         public void Update(Author entityToUpdate, Author entity)
         {
-            entityToUpdate = _booksContext.Author
+            entityToUpdate = _booksStoreContext.Author
                 .Include(a => a.BookAuthors)
-                .Include(a=> a.AuthorContact)
+                .Include(a => a.AuthorContact)
                 .Single(b => b.Id == entityToUpdate.Id);
 
             entityToUpdate.Name = entity.Name;
@@ -62,20 +62,20 @@ namespace EFCoreDatabaseFirstSample.Models.DataManager
             entityToUpdate.AuthorContact.Address = entity.AuthorContact.Address;
             entityToUpdate.AuthorContact.ContactNumber = entity.AuthorContact.ContactNumber;
 
-            List<BookAuthors> deletedBooks = entityToUpdate.BookAuthors.Except(entity.BookAuthors).ToList();
-            List<BookAuthors> addedBooks = entity.BookAuthors.Except(entityToUpdate.BookAuthors).ToList();
+            var deletedBooks = entityToUpdate.BookAuthors.Except(entity.BookAuthors).ToList();
+            var addedBooks = entity.BookAuthors.Except(entityToUpdate.BookAuthors).ToList();
 
             deletedBooks.ForEach(bookToDelete =>
                 entityToUpdate.BookAuthors.Remove(
                     entityToUpdate.BookAuthors
                         .First(b => b.BookId == bookToDelete.BookId)));
 
-            foreach (BookAuthors addedBook in addedBooks)
+            foreach (var addedBook in addedBooks)
             {
-                _booksContext.Entry(addedBook).State = EntityState.Added;
+                _booksStoreContext.Entry(addedBook).State = EntityState.Added;
             }
 
-            _booksContext.SaveChanges();
+            _booksStoreContext.SaveChanges();
         }
 
         public void Delete(Author entity)

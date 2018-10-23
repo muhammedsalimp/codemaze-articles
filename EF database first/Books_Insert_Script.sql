@@ -1,4 +1,4 @@
-USE Books
+USE BookStore
 
 INSERT INTO BookCategory
 VALUES
